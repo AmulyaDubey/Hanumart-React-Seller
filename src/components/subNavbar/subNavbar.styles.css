@@ -1,0 +1,22 @@
+.sub-navbar-main{
+    background-color: rgba(229,229,229,0.08);
+    box-shadow: .5rem .5rem 0.5rem rgba(229,229,229,0.7);
+    padding: 5px;
+    width: 100%;
+}
+
+.sub-navbar-content{
+    display: flex;
+    /* flex-wrap: wrap; */
+    max-width: 100%;
+    /* white-space: nowrap; */
+    justify-content: space-between;
+}
+
+.subnavbar-dropdows{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    white-space: nowrap;
+    justify-content: center;
+}

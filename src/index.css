@@ -1,13 +1,80 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Mulish', sans-serif;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Mulish', sans-serif;
+}
+
+.bold{
+  font-weight: 700;
+}
+
+.blue-text{
+  color:  var(--blue);
+}
+.green-text{
+  color:  var(--green);
+}
+.gray-text{
+  color:  var(--gray);
+}
+
+
+
+.full-height{
+  height: 100%
+}
+
+
+.center-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.full-width{
+  width: 100%
+}
+
+.standard-green-btn{
+  background-color: var(--green);
+  border: none;
+  color: white;
+  font-weight: 400;
+  padding: 8px 40px
+}
+
+.standard-blue-btn{
+  background-color: var(--blue);
+  border: none;
+  color: white;
+  font-weight: 400;
+  padding: 5px 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+a{
+  text-decoration: none;
+}
+.row{
+  align-items: flex-start !important;
+}
+
+:root {
+  --blue: #22577A;
+  --green: #38A3A5;
+  --red: #DF4E57;
+  --golden: #FFD700;
+  --gray: rgba(0,0,0,0.45)
 }

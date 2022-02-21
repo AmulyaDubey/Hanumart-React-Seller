@@ -1,0 +1,84 @@
+.main-navbar{
+    background-color: var(--blue);
+    color: white;
+    padding:0;
+}
+.navbar-brand {
+    padding:0;
+    margin: 0;
+}
+.navbar-brand img{
+    height: 60px
+}
+
+.seller-brand-navbar{
+    display: flex;
+    align-items: center;
+}
+
+.seller-brand-navbar p{
+    font-weight: 700;
+    margin:0;
+    margin-left: 10px;
+    font-style: italic;
+    font-size: 26px;
+}
+
+.customer__mode__btn{
+    padding: 5px 15px
+}
+
+.horizontal__tab{
+    display: flex
+}
+
+.tabName{
+    padding: 5px 15px;
+    margin: 3px 5px
+}
+
+.active__tab{
+    background-color: var(--green);
+    color: white
+}
+
+@media only screen and (max-width: 530px) {
+    .tabName{
+        font-size: 12px;
+        margin: 0;
+    }
+    .customer__mode__btn{
+        padding: 3px 10px
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .customer__mode__btn{
+        font-size: 12px;
+    }
+    .seller-brand-navbar p{
+        font-size: 20px;
+    }
+    .tabName{
+        font-size: 12px;
+        padding: 3px 5px;
+        margin: 3px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .customer__mode__btn{
+        font-size: 11px;
+        padding: 3px 5px
+    }
+    .seller-brand-navbar p{
+        margin-left: 5px;
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .tabName{
+        font-size: 10px;
+    }
+}

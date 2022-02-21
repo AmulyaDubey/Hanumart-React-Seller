@@ -1,0 +1,41 @@
+.edit__product__form .form-group{
+    margin: 5px 0
+}
+
+.edit__product__empty__image{
+    border: 2px dashed rgb(194, 190, 190);
+    color: rgb(161, 161, 161);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    cursor: pointer;
+}
+
+.products__screen{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    padding-left: 0;
+    /* margin-left: 20px; */
+    /* flex: 1 0 120px; */
+    overflow-x:scroll
+}
+
+.seller__add__product__button{
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px var(--blue) solid;
+    color: var(--blue);
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    cursor: pointer;
+}

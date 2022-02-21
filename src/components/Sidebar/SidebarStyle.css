@@ -1,0 +1,30 @@
+
+
+.sidebar-content{
+    height: 100%;
+    background-color: #F2F1F1 !important;
+    z-index: 1;
+    overflow: auto;
+    /* width: max-content; */
+    max-width: 200px;
+    min-height: 100vh;
+}
+
+.sidebar__toggle__bar{
+    min-height: 100vh;
+    height: 100%;
+    background-color: #F2F1F1 !important
+}
+.text-right{
+    text-align: right !important;
+    border-bottom: none !important;
+}
+
+
+.sidebar-item{
+    width: 100%;
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid #C6C6C6;
+    cursor: pointer;
+}
