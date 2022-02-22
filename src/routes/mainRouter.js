@@ -7,6 +7,7 @@ import Orders from "../screens/dashboard/orders";
 import Inventory from "../screens/dashboard/Inventory";
 import EditProduct from "../screens/dashboard/EditProduct";
 import Login from "../screens/login/login.screen";
+import SellerProfile from "../screens/sellerProfile/sellerProfile";
 
 const Component1 = () => {
   return <h1>Component 1</h1>;
@@ -21,6 +22,7 @@ export default class MainRouter extends Component {
         <Route exact path="/seller/orders" component={Orders} />
         <Route exact path="/seller/inventory" component={Inventory} />
         <Route exact path="/seller/product" component={EditProduct} />
+        <Route exact path="/seller/profile" component={SellerProfile} />
       </Switch>
     );
   }
