@@ -22,7 +22,6 @@ code {
 }
 
 
-
 .full-height{
   height: 100%
 }
@@ -47,7 +46,8 @@ code {
   border: none;
   color: white;
   font-weight: 400;
-  padding: 8px 40px
+  padding: 8px 40px;
+  cursor: pointer;
 }
 
 .standard-blue-btn{
