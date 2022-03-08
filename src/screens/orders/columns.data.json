@@ -1,0 +1,16 @@
+{
+    "columns": [
+        {
+            "Header": "Order ID",
+            "accessor": "_id"
+        },
+        {
+            "Header": "Customer details",
+            "accessor": "customer"
+        },
+        {
+            "Header": "Phone",
+            "accessor": "contact"
+        }
+    ]
+}

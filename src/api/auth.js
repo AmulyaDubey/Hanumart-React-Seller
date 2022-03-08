@@ -1,0 +1,76 @@
+export const signin = (user) => {
+  console.log(user);
+  return fetch(`${process.env.REACT_APP_API_URL}/seller/signin`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+export const authenticate = (jwt, next) => {
+  //set jwt in local storage of browser after login
+  if (typeof window !== undefined) {
+    localStorage.setItem("sellerJwt", JSON.stringify(jwt));
+    next();
+  }
+};
+
+export const signout = (next) => {
+  if (typeof window !== undefined) localStorage.removeItem("jwt");
+  next();
+  return fetch(`${process.env.REACT_APP_API_URL}/seller/signout`, {
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const isAuthenticated = () => {
+  // check and return jwt token and user Id
+  if (typeof window === undefined) {
+    return false;
+  }
+  if (localStorage.getItem("sellerJwt")) {
+    console.log('hai naa')
+    return JSON.parse(localStorage.getItem("sellerJwt"));
+  } else {
+    return false;
+  }
+};
+
+export const signup = (user) => {
+  return fetch(`${process.env.REACT_APP_API_URL}/signup`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getUserId = () => {
+  if (isAuthenticated().user) {
+    return isAuthenticated().user._id;
+  } else return null;
+};

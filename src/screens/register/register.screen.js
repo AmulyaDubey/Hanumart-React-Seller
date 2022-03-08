@@ -9,10 +9,18 @@ import PhoneVerification from "./components/phoneVerification.component";
 export default class Register extends Component {
   state = {
     activeStep: 0,
+    seller: {},
   };
 
   moveToStep = (clickedStep) => {
     this.setState({ activeStep: clickedStep });
+  };
+
+  saveSeller = (data) => {
+    let { seller } = this.state;
+    seller = { ...seller, ...data };
+    console.log({ seller });
+    this.setState({ seller });
   };
 
   render() {
@@ -45,9 +53,29 @@ export default class Register extends Component {
             activeStep={activeStep}
           />
         </div>
-        {activeStep === 0 && <RegisterSeller moveToStep={this.moveToStep} />}
-        {activeStep === 1 && <RegisterProfile moveToStep={this.moveToStep} />}
-        {activeStep === 2 && <PhoneVerification moveToStep={this.moveToStep} />}
+        {activeStep === 0 && (
+          <RegisterSeller
+            moveToStep={this.moveToStep}
+            saveSeller={this.saveSeller}
+          />
+        )}
+        {activeStep === 1 && (
+          <RegisterProfile
+            moveToStep={this.moveToStep}
+            saveSeller={this.saveSeller}
+          />
+        )}
+        {activeStep === 2 && (
+          <PhoneVerification
+            moveToStep={this.moveToStep}
+            saveSeller={this.saveSeller}
+          />
+        )}
+        <div className="text-center mt-4">
+          <a className="green-text" href="/">
+            Existing user? Login here
+          </a>
+        </div>
       </div>
     );
   }

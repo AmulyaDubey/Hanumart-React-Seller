@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ label, type, handleChange, name }) => {
+const Input = ({ label, type, required, name }) => {
   const styles = {
     inputGroup: {
       display: "flex",
@@ -17,12 +17,15 @@ const Input = ({ label, type, handleChange, name }) => {
   return (
     <div style={styles.inputGroup} className="full-width">
       <label style={styles.label} className="bold">
-        {label}
+        {label} {required && <span style={{ color: "red" }}>*</span>}
       </label>
       <input
         style={styles.input}
         type={type}
-        onChange={(event) => handleChange(event, name)}
+        name={name}
+        minLength={type === "password" ? 8 : type === "contact" ? 10 : 0}
+        required={required}
+        // onChange={(event) => handleChange(event, name)}
       />
     </div>
   );

@@ -15,7 +15,7 @@ code {
   color:  var(--blue);
 }
 .green-text{
-  color:  var(--green);
+  color:  var(--green) !important;
 }
 .gray-text{
   color:  var(--gray);
@@ -37,8 +37,17 @@ code {
   justify-content: center;
 }
 
+.align-self-center{
+  margin:auto;
+  display: flex
+}
+
 .full-width{
   width: 100%
+}
+
+.restrict-width{
+  width: max-content
 }
 
 .standard-green-btn{
@@ -60,13 +69,20 @@ code {
   margin-top: 10px;
 }
 
+
 textarea:focus, input:focus{
   outline: none;
 }
 
 a{
   text-decoration: none;
+  cursor: pointer;
 }
+
+.clickable{
+  cursor: pointer;
+}
+
 .row{
   align-items: flex-start !important;
 }

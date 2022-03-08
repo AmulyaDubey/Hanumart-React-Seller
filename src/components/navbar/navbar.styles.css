@@ -4,7 +4,7 @@
     padding:0;
 }
 .navbar-brand {
-    padding:0;
+    padding:0 !important;
     margin: 0;
 }
 .navbar-brand img{
@@ -29,16 +29,25 @@
 }
 
 .horizontal__tab{
-    display: flex
+    display: flex;
 }
 
 .tabName{
     padding: 5px 15px;
-    margin: 3px 5px
+    margin: 3px 5px;
+}
+
+.tabName a{
+    color: var(--blue);
+    text-decoration: none;
 }
 
 .active__tab{
     background-color: var(--green);
+    color: white
+}
+
+.active__tab a{
     color: white
 }
 

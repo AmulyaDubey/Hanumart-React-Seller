@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./SellerStyles.css";
 import Heading from "../../components/utils/Heading";
-import ProductImage from "../../components/ProductCard/sampleProduct.png";
+// import ProductImage from "../../components/ProductCard/sampleProduct.png";
 
 export default class ProductForm extends Component {
   state = {

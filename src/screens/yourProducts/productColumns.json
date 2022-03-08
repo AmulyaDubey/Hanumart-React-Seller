@@ -1,0 +1,32 @@
+{
+    "columns": [
+        {
+          "Header": "Product ID",
+          "accessor": "_id"
+        },
+        {
+          "Header": "Product Image",
+          "accessor": "image"
+        },
+        {
+          "Header": "Product Name",
+          "accessor": "name"
+        },
+        {
+          "Header": "Product Category",
+          "accessor": "category"
+        },
+        {
+          "Header": "Product Price",
+          "accessor": "price"
+        },
+        {
+            "Header": "Unit",
+            "accessor": "unit"
+        },
+        {
+            "Header": "Stock",
+            "accessor": "stock"
+        } 
+      ]
+}

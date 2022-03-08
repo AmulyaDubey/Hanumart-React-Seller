@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./navbar.styles.css";
 import Logo from "./logo.png";
 import { withRouter } from "react-router-dom";
+import { isAuthenticated, signout } from "../../api/auth";
 
 class NavigationBar extends Component {
   render() {
@@ -12,13 +13,15 @@ class NavigationBar extends Component {
             <img src={Logo} alt="Logo" />
             <p>Seller</p>
           </a>
-          <a
-            className="standard-green-btn customer__mode__btn"
-            style={{ color: "white" }}
-            href="/"
-          >
-            Logout
-          </a>
+          {isAuthenticated() && (
+            <a
+              className="standard-green-btn customer__mode__btn"
+              style={{ color: "white" }}
+              onClick={() => signout(() => this.props.history.push("/"))}
+            >
+              Logout
+            </a>
+          )}
         </div>
       </nav>
     );

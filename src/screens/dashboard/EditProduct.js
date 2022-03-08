@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./SellerStyles.css";
 import Heading from "../../components/utils/Heading";
-import ProductImage from "../../components/ProductCard/sampleProduct.png";
+// import ProductImage from "../../components/ProductCard/sampleProduct.png";
 import ProductForm from "./ProductForm";
 
 export default class EditProduct extends Component {
@@ -11,7 +11,7 @@ export default class EditProduct extends Component {
       name: "abc",
     },
     mode: "",
-    imageFile: ProductImage,
+    // imageFile: ProductImage,
   };
 
   fileInput = React.createRef();
@@ -42,7 +42,7 @@ export default class EditProduct extends Component {
           <div className="col-4">
             {imageFile ? (
               <div>
-                <img src={imageFile} alt="product" style={{ width: "100%" }} />
+                {/* <img src={imageFile} alt="product" style={{ width: "100%" }} /> */}
                 <button
                   className="standard-blue-btn"
                   onClick={() => this.toggleInput()}

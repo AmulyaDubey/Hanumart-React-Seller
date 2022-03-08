@@ -1,0 +1,24 @@
+{
+    "columns":[
+        {
+            "Header": "Offer Id",
+            "accessor": "_id"
+        },
+        {
+            "Header": "Offer Code",
+            "accessor": "offerCode"
+        },
+        {
+            "Header": "Offer Type",
+            "accessor": "type"
+        },
+        {
+            "Header": "Offer Amount (If Flat)",
+            "accessor": "amount"
+        },
+        {
+            "Header": "Description",
+            "accessor": "description"
+        }
+    ]
+}
