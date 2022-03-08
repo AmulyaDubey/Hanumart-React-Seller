@@ -10,6 +10,8 @@ import Profile from "../screens/profile/profile.screen";
 import YourProducts from "../screens/yourProducts/yourProducts.screen"
 import ForgotPassword from "../screens/login/forgotPassword.screen";
 import OffersList from "../screens/offers/offers.screen";
+import SellerProfile from "../screens/sellerProfile/sellerProfile";
+
 
 export default class MainRouter extends Component {
   render() {
@@ -23,6 +25,7 @@ export default class MainRouter extends Component {
         <Route exact path="/seller/profile" component={Profile} />
         <Route exact path="/seller/your-products" component={YourProducts} />
         <Route exact path="/seller/your-offers" component={OffersList} />
+        <Route exact path="/seller/profile" component={SellerProfile} />
       </Switch>
     );
   }
