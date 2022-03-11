@@ -17,7 +17,7 @@ class NavigationBar extends Component {
             <a
               className="standard-green-btn customer__mode__btn"
               style={{ color: "white" }}
-              onClick={() => signout(() => this.props.history.push("/"))}
+              onClick={() => signout()}
             >
               Logout
             </a>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Input from "../../../components/utils/Input";
+import Input from "../../../components/form/Input";
 
 export default class PhoneVerification extends Component {
   render() {

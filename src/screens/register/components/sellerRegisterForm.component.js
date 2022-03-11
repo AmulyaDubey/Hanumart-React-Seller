@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Input from "../../../components/utils/Input";
+import Input from "../../../components/form/Input";
 import Form from "../../../components/form/form.component";
 
 export default class RegisterSeller extends Component {

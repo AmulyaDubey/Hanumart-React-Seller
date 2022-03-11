@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Input from "../../../components/utils/Input";
-import Select from "../../../components/utils/Select";
+import Input from "../../../components/form/Input";
+import Select from "../../../components/form/Select";
 import { State, City } from "country-state-city";
 import Form from "../../../components/form/form.component";
+import productCategories from "../../../api/categories.list.json";
 
 export default class RegisterProfile extends Component {
   state = {
@@ -49,7 +50,7 @@ export default class RegisterProfile extends Component {
             <Select
               label="Category"
               name="category"
-              list={this.getStatesList()}
+              list={productCategories.categories}
               required={true}
             />
             <Input

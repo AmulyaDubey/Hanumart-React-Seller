@@ -16,7 +16,6 @@ export const signin = (user) => {
     });
 };
 
-
 export const authenticate = (jwt, next) => {
   //set jwt in local storage of browser after login
   if (typeof window !== undefined) {
@@ -25,14 +24,14 @@ export const authenticate = (jwt, next) => {
   }
 };
 
-export const signout = (next) => {
-  if (typeof window !== undefined) localStorage.removeItem("jwt");
-  next();
+export const signout = () => {
+  if (typeof window !== undefined) localStorage.removeItem("sellerJwt");
   return fetch(`${process.env.REACT_APP_API_URL}/seller/signout`, {
     method: "GET",
   })
     .then((response) => {
-      return response.json();
+      // return response.json();
+      window.location.href = "/"
     })
     .catch((err) => {
       console.log(err);
@@ -45,7 +44,7 @@ export const isAuthenticated = () => {
     return false;
   }
   if (localStorage.getItem("sellerJwt")) {
-    console.log('hai naa')
+    console.log("hai naa");
     return JSON.parse(localStorage.getItem("sellerJwt"));
   } else {
     return false;

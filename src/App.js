@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavigationBar />
-      {!isAuthenticated() && <SubNavigationBar />} 
+      {isAuthenticated() && <SubNavigationBar />} 
       <MainRouter />
     </BrowserRouter>
   );

@@ -31,8 +31,8 @@ const Select = ({ label, handleChange, name, list, required }) => {
           Select an Option
         </option>
         {list.map((item) => (
-          <option value={item.isoCode} dataValue={item}>
-            {item.name}
+          <option value={item.isoCode || item} dataValue={item}>
+            {item.name || item}
           </option>
         ))}
       </select>
