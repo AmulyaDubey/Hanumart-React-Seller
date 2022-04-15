@@ -6,7 +6,7 @@ import Tab from "./tab.component";
 
 class SubNavigationBar extends Component {
   state = {
-    options: ["Orders", "Inventory", "Sales", "Groups", "Bids"],
+    options: ["Orders", "Inventory", "Offers", "Groups", "Bids"],
   };
 
   render() {

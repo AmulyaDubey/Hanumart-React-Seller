@@ -1,5 +1,4 @@
 export const signin = (user) => {
-  console.log(user);
   return fetch(`${process.env.REACT_APP_API_URL}/seller/signin`, {
     method: "POST",
     headers: {

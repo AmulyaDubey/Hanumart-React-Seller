@@ -21,8 +21,8 @@ export default class MainRouter extends Component {
         <Route exact path="/register" component={Register} />
         <Route exact path="/seller/orders" component={Orders} />
         <Route exact path="/seller/product" component={Product} />
-        <Route exact path="/seller/your-products" component={YourProducts} />
-        <Route exact path="/seller/your-offers" component={OffersList} />
+        <Route exact path="/seller/inventory" component={YourProducts} />
+        <Route exact path="/seller/offers" component={OffersList} />
         <Route exact path="/seller/profile" component={SellerProfile} />
         <Route exact path="/seller/offer" component={Offer} />
       </Switch>

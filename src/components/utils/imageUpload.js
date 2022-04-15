@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 export default class ImageUpload extends Component {
-
   fileInput = React.createRef();
 
   toggleInput = () => {
@@ -9,10 +8,11 @@ export default class ImageUpload extends Component {
   };
 
   handleChange = (e) => {
-    const imageUrl = window.URL.createObjectURL(e.target.files[0]);
+    // const imageUrl = window.URL.createObjectURL(e.target.files[0]);
+    const image = e.target.files[0];
     // this.setState({ imageFile: imageUrl });
     const { updateState, field } = this.props;
-    updateState(field, imageUrl);
+    updateState(field, image);
   };
 
   removeImage = () => {
@@ -21,8 +21,6 @@ export default class ImageUpload extends Component {
     updateState(field, "");
   };
 
-
-
   render() {
     const { label, image } = this.props;
     return (
@@ -30,7 +28,11 @@ export default class ImageUpload extends Component {
         <h6>{label}</h6>
         {image ? (
           <div>
-            <img src={image} alt="product" style={{ width: "100%" }} />
+            <img
+              src={window.URL.createObjectURL(image)}
+              alt="product"
+              style={{ width: "100%" }}
+            />
             <button
               className="btn btn-success btn-sm mt-2"
               onClick={() => this.toggleInput()}

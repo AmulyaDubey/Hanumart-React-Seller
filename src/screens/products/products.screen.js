@@ -9,6 +9,11 @@ export default class Login extends Component {
     return (
       <div className="p-4">
         <Heading title="Your Products" />
+        <a href="/seller/product">
+          <button className="standard-green-btn mt-2 mb-2 float-right">
+            Add New Product
+          </button>
+        </a>
         <SmartTable data={ProductList} columns={columns.columns} />
       </div>
     );

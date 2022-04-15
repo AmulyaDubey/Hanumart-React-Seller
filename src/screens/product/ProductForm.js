@@ -15,7 +15,6 @@ export default class ProductForm extends Component {
     },
   };
   getFormData = (data) => {
-    console.log(data);
     this.props.submitFormData(data);
   };
   render() {
@@ -67,7 +66,6 @@ export default class ProductForm extends Component {
             type="checkbox"
             id="productVariant"
             className="mr-2"
-            required
           />
           <label for="productVariant">Is Product Variant Available</label>
         </div>

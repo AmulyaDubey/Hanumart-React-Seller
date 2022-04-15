@@ -3,18 +3,16 @@ import React, { Component } from "react";
 import Heading from "../../components/utils/Heading";
 import ProductForm from "./ProductForm";
 import ImageUpload from "../../components/utils/imageUpload";
+import { saveProduct } from "../../api/product";
 
 export default class Product extends Component {
   state = {
     product: {
-      _id: "abc",
-      name: "abc",
       image: "",
       thumbnail: "",
     },
     mode: "View",
     error: "",
-    // imageFile: ProductImage,
   };
 
   componentDidMount = () => {
@@ -44,12 +42,15 @@ export default class Product extends Component {
   submitFormData = (data) => {
     const { product } = this.state;
     if (!product.image) {
-      this.setState({ error: "No product image uploaded" });
+      return this.setState({ error: "No product image uploaded" });
     }
     if (!product.thumbnail) {
-      this.setState({ error: "No product thumbnail uploaded" });
+      return this.setState({ error: "No product thumbnail uploaded" });
     }
-    data = { ...product, data };
+    this.setState({ error: "" });
+    const updatedProduct = { ...product, ...data };
+    saveProduct(updatedProduct);
+    // console.log("Final is:", updatedProduct);
   };
 
   render() {
