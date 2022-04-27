@@ -55,7 +55,7 @@ code {
   border: none;
   color: white;
   font-weight: 400;
-  padding: 8px 40px;
+  padding: 4px 20px;
   cursor: pointer;
 }
 
@@ -64,7 +64,7 @@ code {
   border: none;
   color: white;
   font-weight: 400;
-  padding: 8px 40px;
+  padding: 8px 20px;
   cursor: pointer;
 }
 
@@ -84,6 +84,12 @@ a{
 
 .row{
   align-items: flex-start !important;
+}
+
+fieldset:disabled input, fieldset:disabled select, fieldset:disabled textarea{
+  background-color: white !important;
+  appearance: none;
+  padding: 0 !important;
 }
 
 :root {

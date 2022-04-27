@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ label, type, required, name }) => {
+const Input = ({ label, type, required, name, defaultValue }) => {
   const styles = {
     inputGroup: {
       display: "flex",
@@ -25,7 +25,7 @@ const Input = ({ label, type, required, name }) => {
         name={name}
         minLength={type === "password" ? 8 : type === "contact" ? 10 : 0}
         required={required}
-        // onChange={(event) => handleChange(event, name)}
+        defaultValue={defaultValue}
       />
     </div>
   );

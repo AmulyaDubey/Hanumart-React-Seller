@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 export default class ImageUpload extends Component {
+  state = {
+    imageUrl: this.props.image,
+  };
+
   fileInput = React.createRef();
 
   toggleInput = () => {
@@ -8,43 +12,49 @@ export default class ImageUpload extends Component {
   };
 
   handleChange = (e) => {
-    // const imageUrl = window.URL.createObjectURL(e.target.files[0]);
     const image = e.target.files[0];
-    // this.setState({ imageFile: imageUrl });
     const { updateState, field } = this.props;
     updateState(field, image);
+    this.setState({ imageUrl: window.URL.createObjectURL(image) });
   };
 
   removeImage = () => {
-    // this.setState({ imageFile: "" });
     const { updateState, field } = this.props;
     updateState(field, "");
   };
 
   render() {
-    const { label, image } = this.props;
+    const { label, image, size, viewOnly } = this.props;
+    let { imageUrl } = this.state;
+    if (!imageUrl && image) imageUrl = image;
     return (
       <div>
         <h6>{label}</h6>
-        {image ? (
+        {image || imageUrl ? (
           <div>
             <img
-              src={window.URL.createObjectURL(image)}
+              src={imageUrl}
               alt="product"
-              style={{ width: "100%" }}
+              style={{ width: size, height: size }}
             />
-            <button
-              className="btn btn-success btn-sm mt-2"
-              onClick={() => this.toggleInput()}
-            >
-              Change Image
-            </button>
-            <button
-              className="btn btn-danger btn-sm mt-2 ml-4"
-              onClick={() => this.removeImage()}
-            >
-              Remove Image
-            </button>
+            <br />
+
+            {!viewOnly && (
+              <>
+                <button
+                  className="btn btn-success btn-sm mt-2"
+                  onClick={() => this.toggleInput()}
+                >
+                  Change Image
+                </button>
+                <button
+                  className="btn btn-danger btn-sm mt-2 ml-4"
+                  onClick={() => this.removeImage()}
+                >
+                  Remove Image
+                </button>
+              </>
+            )}
           </div>
         ) : (
           <div
@@ -61,6 +71,7 @@ export default class ImageUpload extends Component {
           style={{ visibility: "hidden" }}
           onChange={(e) => this.handleChange(e)}
         />
+        <br />
       </div>
     );
   }

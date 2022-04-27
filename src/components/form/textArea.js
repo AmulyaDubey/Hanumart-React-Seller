@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextArea = ({ label, required, name }) => {
+const TextArea = ({ label, required, name, defaultValue }) => {
   const styles = {
     inputGroup: {
       display: "flex",
@@ -23,6 +23,7 @@ const TextArea = ({ label, required, name }) => {
         style={styles.input}
         name={name}
         required={required}
+        defaultValue={defaultValue}
       />
     </div>
   );

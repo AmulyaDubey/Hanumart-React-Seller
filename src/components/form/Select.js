@@ -1,6 +1,13 @@
 import React from "react";
 
-const Select = ({ label, handleChange, name, list, required }) => {
+const Select = ({
+  label,
+  handleChange,
+  name,
+  list,
+  required,
+  defaultValue,
+}) => {
   const styles = {
     inputGroup: {
       display: "flex",
@@ -26,6 +33,7 @@ const Select = ({ label, handleChange, name, list, required }) => {
         onChange={(event) => (handleChange ? handleChange(event, name) : {})}
         required={required}
         name={name}
+        value={defaultValue}
       >
         <option value="none" selected disabled hidden>
           Select an Option

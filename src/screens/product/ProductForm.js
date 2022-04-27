@@ -8,23 +8,23 @@ import TextArea from "../../components/form/textArea";
 // import ProductImage from "../../components/ProductCard/sampleProduct.png";
 
 export default class ProductForm extends Component {
-  state = {
-    item: {
-      _id: "abc",
-      name: "abc",
-    },
-  };
   getFormData = (data) => {
     this.props.submitFormData(data);
   };
+  componentDidMount = () => {};
   render() {
-    const { item } = this.state;
-    const { mode, formError } = this.props;
+    const { viewOnly, formError, product } = this.props;
     return (
-      <Form onSubmit={this.getFormData} error={formError}>
+      <Form onSubmit={this.getFormData} error={formError} viewOnly={viewOnly}>
         <div className="row">
           <div className="col-4">
-            <Input label="Name" type="text" name="name" required={true} />
+            <Input
+              label="Name"
+              type="text"
+              name="name"
+              required={true}
+              defaultValue={product.name}
+            />
           </div>
           <div className="col-4">
             <Select
@@ -32,6 +32,8 @@ export default class ProductForm extends Component {
               name="category"
               list={productCategories.categories}
               required={true}
+              viewOnly={viewOnly}
+              defaultValue={product.category}
             />
           </div>
           <div className="col-4">
@@ -40,6 +42,7 @@ export default class ProductForm extends Component {
               name="stock"
               list={["In Stock", "Out of stock"]}
               required={true}
+              defaultValue={product.stock}
             />
           </div>
         </div>
@@ -50,6 +53,7 @@ export default class ProductForm extends Component {
               type="text"
               name="description"
               required={true}
+              defaultValue={product.description}
             />
           </div>
           <div className="col-6">
@@ -58,16 +62,15 @@ export default class ProductForm extends Component {
               type="text"
               name="unitDescription"
               required={true}
+              defaultValue={product.unitDescription}
             />
           </div>
         </div>
         <div>
-          <input
-            type="checkbox"
-            id="productVariant"
-            className="mr-2"
-          />
-          <label for="productVariant">Is Product Variant Available</label>
+          <input type="checkbox" id="productVariant" className="mr-2" />
+          {!viewOnly && (
+            <label for="productVariant">Is Product Variant Available</label>
+          )}
         </div>
         <div className="row mt-2">
           <div className="col-4">
@@ -76,6 +79,7 @@ export default class ProductForm extends Component {
               name="unit"
               list={["Unit one"]}
               required={true}
+              defaultValue={product.unit}
             />
           </div>
           <div className="col-4">
@@ -84,6 +88,7 @@ export default class ProductForm extends Component {
               type="number"
               name="marketPrice"
               required={true}
+              defaultValue={product.marketPrice}
             />
           </div>
           <div className="col-4">
@@ -92,17 +97,20 @@ export default class ProductForm extends Component {
               type="number"
               name="offerPrice"
               required={true}
+              defaultValue={product.offerPrice}
             />
           </div>
         </div>
-        <div className="d-flex justify-content-end mt-4">
-          <button className="standard-blue-btn mr-3">
-            Add More Product Variant
-          </button>
-          <button className="standard-green-btn" type="submit">
-            Save Product Variant
-          </button>
-        </div>
+        {!viewOnly && (
+          <div className="d-flex justify-content-end mt-4">
+            <button className="standard-blue-btn mr-3">
+              Add More Product Variant
+            </button>
+            <button className="standard-green-btn" type="submit">
+              Save Product Variant
+            </button>
+          </div>
+        )}
       </Form>
     );
   }

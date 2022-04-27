@@ -43,7 +43,6 @@ export const isAuthenticated = () => {
     return false;
   }
   if (localStorage.getItem("sellerJwt")) {
-    console.log("hai naa");
     return JSON.parse(localStorage.getItem("sellerJwt"));
   } else {
     return false;
@@ -67,8 +66,8 @@ export const signup = (user) => {
     });
 };
 
-export const getUserId = () => {
-  if (isAuthenticated().user) {
-    return isAuthenticated().user._id;
+export const getSellerId = () => {
+  if (isAuthenticated().seller) {
+    return isAuthenticated().seller._id;
   } else return null;
 };

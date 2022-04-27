@@ -61,14 +61,14 @@ function Table({ columns, data }) {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map((cell) => {
-                  console.log("cell is ", cell);
                   return (
                     <td {...cell.getCellProps()}>
-                      {cell.column.id === "image" ? (
+                      {cell.column.id === "image" ||
+                      cell.column.id === "thumbnail" ? (
                         <img
-                          src={cell.value}
+                          src={`${process.env.REACT_APP_API_URL}/image/${cell.value}`}
                           alt=""
-                          style={{ width: "200px" }}
+                          style={{ width: "150px", height: "150px" }}
                         />
                       ) : (
                         cell.render("Cell")
@@ -181,8 +181,13 @@ function GlobalFilter({
   );
 }
 
-function SmartTable({ data, columns }) {
+function SmartTable({ data, columns, editable, urlLinker, onDelete }) {
   columns = [
+    {
+      Header: "#",
+      accessor: "index",
+      Cell: ({ row }) => <p>{parseInt(row.id) + 1}</p>,
+    },
     ...columns,
     {
       Header: "Actions",
@@ -190,9 +195,20 @@ function SmartTable({ data, columns }) {
       Cell: ({ row }) => {
         return (
           <div>
-            <button className="standard-green-btn mr-2">View</button>
-            <button className="standard-green-btn mr-2">Edit</button>
-            <button className="standard-green-btn">Delete</button>
+            <a href={`/seller/${urlLinker}/${row.original._id}/view`}>
+              <button className="standard-green-btn mr-2">View</button>
+            </a>
+            {editable && (
+              <a href={`/seller/${urlLinker}/${row.original._id}/edit`}>
+                <button className="standard-green-btn mr-2">Edit</button>
+              </a>
+            )}
+            <button
+              className="standard-green-btn"
+              onClick={() => onDelete(row.original._id)}
+            >
+              Delete
+            </button>
           </div>
         );
       },

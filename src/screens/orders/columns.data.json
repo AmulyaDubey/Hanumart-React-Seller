@@ -1,16 +1,24 @@
 {
     "columns": [
         {
-            "Header": "Order ID",
-            "accessor": "_id"
+            "Header": "Order Date",
+            "accessor": "orderDate"
         },
         {
-            "Header": "Customer details",
-            "accessor": "customer"
+            "Header": "Shipment Address",
+            "accessor": "address.fullAddress"
         },
         {
             "Header": "Phone",
-            "accessor": "contact"
+            "accessor": "address.contact"
+        },
+        {
+            "Header": "Amount (in Rs.)",
+            "accessor": "priceDetails.total"
+        },
+        {
+            "Header": "Status",
+            "accessor": "status"
         }
     ]
 }

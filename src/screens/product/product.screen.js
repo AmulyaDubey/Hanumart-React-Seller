@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
 import Heading from "../../components/utils/Heading";
 import ProductForm from "./ProductForm";
 import ImageUpload from "../../components/utils/imageUpload";
-import { saveProduct } from "../../api/product";
+import { saveProduct, getProductData, updateProduct } from "../../api/product";
+import { Redirect } from "react-router-dom";
 
 export default class Product extends Component {
   state = {
@@ -11,16 +11,33 @@ export default class Product extends Component {
       image: "",
       thumbnail: "",
     },
-    mode: "View",
+    mode: "",
     error: "",
+    redirectToInventory: false,
+    productImage: "",
+    productThumbnail: "",
+  };
+
+  init = async () => {
+    const { productId } = this.props.match.params;
+    if (productId) {
+      const data = await getProductData(productId);
+      if (data) {
+        const mode = this.props.match.params.mode;
+        this.setState({
+          product: data,
+          mode,
+          productImage: data.image,
+          productThumbnail: data.thumbnail,
+        });
+      }
+    } else {
+      this.setState({ mode: "new" });
+    }
   };
 
   componentDidMount = () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    let mode = urlParams.get("mode");
-    if (!mode) return;
-    mode = mode.charAt(0).toUpperCase() + mode.substr(1);
-    this.setState({ mode });
+    this.init();
   };
 
   toggleInput = () => {
@@ -28,53 +45,83 @@ export default class Product extends Component {
   };
 
   updateState = (field, value) => {
-    const { product } = this.state;
-    product[field] = value;
-    this.setState({ product });
+    const fieldString = `product${field[0].toUpperCase() + field.slice(1)}`;
+    this.setState({ [fieldString]: value });
   };
 
   setAsThumbnail = () => {
-    const { product } = this.state;
-    product.thumbnail = product.image;
-    this.setState({ product });
+    const { productImage } = this.state;
+    this.setState({ productThumbnail: productImage });
   };
 
-  submitFormData = (data) => {
-    const { product } = this.state;
-    if (!product.image) {
+  submitFormData = async (data) => {
+    const { product, mode, productImage, productThumbnail } = this.state;
+    if (!productImage) {
       return this.setState({ error: "No product image uploaded" });
     }
-    if (!product.thumbnail) {
+    if (!productThumbnail) {
       return this.setState({ error: "No product thumbnail uploaded" });
     }
-    this.setState({ error: "" });
-    const updatedProduct = { ...product, ...data };
-    saveProduct(updatedProduct);
-    // console.log("Final is:", updatedProduct);
+    const updatedProduct = {
+      ...product,
+      ...data,
+      image: productImage,
+      thumbnail: productThumbnail,
+    };
+    if (mode === "edit") {
+      await updateProduct(product, updatedProduct);
+    } else {
+      await saveProduct(updatedProduct);
+    }
+    this.setState({ redirectToInventory: true, error: "" });
   };
 
   render() {
-    const { mode, product, error } = this.state;
+    const {
+      mode,
+      product,
+      error,
+      redirectToInventory,
+      productImage,
+      productThumbnail,
+    } = this.state;
+    const viewOnly = mode === "view";
+    if (redirectToInventory) {
+      return <Redirect to="/seller/inventory" />;
+    }
     return (
       <div className="p-4">
-        <Heading title={`${mode} Product`} />
-        <div className="row mt-4">
+        <Heading title={product.name || "Add New Product"} />
+        <br />
+        {viewOnly && (
+          <a href={`/seller/product/${product._id}/edit`}>
+            <button className="standard-green-btn float-right mb-4">
+              Edit Product
+            </button>
+          </a>
+        )}
+        <br />
+        <div className="row full-width">
           <div className="col-4">
             <ImageUpload
               label="Product Thumbail"
               field="thumbnail"
               updateState={this.updateState}
-              image={product.thumbnail}
+              image={productThumbnail}
+              size="10vw"
+              viewOnly={viewOnly}
             />
             <ImageUpload
               label="Product Image"
               field="image"
               updateState={this.updateState}
-              image={product.image}
+              image={productImage}
+              size="25vw"
+              viewOnly={viewOnly}
             />
-            {product.image && (
+            {product.image && !viewOnly && (
               <button
-                className="btn btn-outline-dark btn-sm mt-2"
+                className="btn btn-outline-dark btn-sm"
                 onClick={() => this.setAsThumbnail()}
               >
                 Use as thumbail
@@ -83,9 +130,10 @@ export default class Product extends Component {
           </div>
           <div className="col-8">
             <ProductForm
-              mode={mode}
+              viewOnly={viewOnly}
               formError={error}
               submitFormData={this.submitFormData}
+              product={product}
             />
           </div>
         </div>
