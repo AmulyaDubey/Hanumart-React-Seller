@@ -25,7 +25,8 @@ export default class MainRouter extends Component {
         <Route exact path="/seller/inventory" component={YourProducts} />
         <Route exact path="/seller/offers" component={OffersList} />
         <Route exact path="/seller/profile" component={SellerProfile} />
-        <Route exact path="/seller/offer" component={Offer} />
+        <Route exact path="/seller/offer/:offerId/:mode" component={Offer} />
+        <Route path="/seller/offer/new" component={Offer} />
       </Switch>
     );
   }

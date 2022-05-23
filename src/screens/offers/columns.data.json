@@ -1,12 +1,8 @@
 {
     "columns":[
         {
-            "Header": "Offer Id",
-            "accessor": "_id"
-        },
-        {
             "Header": "Offer Code",
-            "accessor": "offerCode"
+            "accessor": "code"
         },
         {
             "Header": "Offer Type",
